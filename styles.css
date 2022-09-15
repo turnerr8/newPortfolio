@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "SF";
+  src: url("./fonts/SF-Pro-Rounded-Regular.otf");
+}
+#background {
+  z-index: -1;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #E4E4E4;
+}
+
+@-webkit-keyframes blobMovement {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes blobMovement {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+.blob {
+  position: relative;
+  height: 25em;
+  width: 25em;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(125px);
+}
+
+.b2 {
+  background-color: #FF0000;
+  bottom: 5em;
+  -webkit-animation: blobMovement 7s infinite;
+          animation: blobMovement 7s infinite;
+}
+
+.b1 {
+  background-color: #9E00FF;
+  right: -7em;
+  top: 5em;
+  -webkit-animation: blobMovement 7s infinite;
+          animation: blobMovement 7s infinite;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+
+.b3 {
+  background-color: #FFD600;
+  left: -7em;
+  top: 5em;
+  -webkit-animation: blobMovement 7s infinite;
+          animation: blobMovement 7s infinite;
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+
+.name {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.body-container {
+  margin: 1.5em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+nav {
+  box-shadow: 7px 7px 15px rgba(82, 82, 82, 0.5);
+  margin: 1em auto;
+  width: 50%;
+  background-color: white;
+  border-radius: 4em;
+  padding: 1px 30px;
+}
+nav ul {
+  margin: 5px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  list-style: none;
+}
+nav li {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.5em;
+  display: inline;
+  padding: 0.5em;
+}
+nav #about {
+  background-color: rgb(200, 200, 200);
+  border-radius: 100px;
+  box-shadow: 3px px 15px rgba(82, 82, 82, 0.5);
+}
+
+.content {
+  width: 90%;
+  margin: 0 auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-around;
+  padding: 0.5em;
+}
+
+.widget {
+  display: inline-block;
+  display: flex;
+  padding: 1em;
+  aspect-ratio: 1/1;
+  width: 300px;
+  margin: 1em;
+  height: 250px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 7px 7px 15px rgba(82, 82, 82, 0.5);
+}
+
+.w1 {
+  padding: 0;
+  justify-content: center;
+  width: 30%;
+  aspect-ratio: 1/1;
+}
+.w1 img {
+  position: relative;
+  height: 100%;
+  bottom: 0px;
+  margin: 0 auto;
+}
+
+.w2 {
+  width: 60%;
+  aspect-ratio: 2/1;
+  align-content: center;
+}
+.w2 h1 {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 4em;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.w3 {
+  width: 60%;
+  aspect-ratio: 2/1;
+  font-family: "SF", sans-serif;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.w3 h3, .w3 p {
+  margin: 0.5em;
+}
+
+.w5 {
+  flex-direction: column;
+}
+.w5 h3 {
+  font-family: "IBM Plex Mono", monospace;
+  margin-bottom: 1em;
+}
+.w5 img {
+  justify-self: center;
+  align-self: center;
+  width: 80%;
+}
+
+.w6 {
+  flex-direction: row;
+  align-content: space-between;
+  width: 60%;
+  background-color: #000;
+}
+.w6 .logo {
+  height: 30%;
+}
+.w6 .logo img {
+  height: 100%;
+  width: auto;
+}
+.w6 .artwork-info {
+  align-self: center;
+  margin-left: 1em;
+  display: flex;
+  height: 90%;
+  flex-direction: row;
+  align-content: center;
+  padding: 0.5em;
+}
+.w6 .artwork-info img {
+  height: 100%;
+  align-self: center;
+  margin-right: 2em;
+}
+.w6 .spotify-recent {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "SF", sans-serif;
+  justify-items: space-around;
+  height: 80%;
+}
+.w6 .spotify-recent .recently-played {
+  color: white;
+  font-size: 1.5em;
+}
+.w6 .spotify-recent .song-artist {
+  align-self: flex-end;
+}
+.w6 .spotify-recent .song {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: bold;
+  font-size: 3em;
+  color: #1DCB5B;
+  text-decoration: none;
+}
+.w6 .spotify-recent .song:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+.w6 .spotify-recent .artist {
+  color: white;
+  font-size: 0.9em;
+  font-family: "SF", sans-serif;
+}
+
+.w7 {
+  height: 500px;
+}/*# sourceMappingURL=styles.css.map */

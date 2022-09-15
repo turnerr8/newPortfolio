@@ -1,0 +1,34 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body::before, body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: '';
+  --gradient:radial-gradient(at 50% 50%,
+         red, rgba(255, 0, 0, 0.2) 70%, transparent 90%);
+  --mask: var(--gradient), var(--gradient);
+  -webkit-mask: var(--mask);
+  -webkit-mask-composite: source-in;
+  mask: var(--mask);
+  -webkit-mask-composite: intersect;
+          mask-composite: intersect;
+  mix-blend-mode: color;
+}
+
+body::before {
+  background: #000;
+  -webkit-filter: url(#f);
+          filter: url(#f);
+}
+
+body::after {
+  background: -webkit-gradient(linear, left top, right top, from(red), color-stop(navy), to(aqua));
+  background: linear-gradient(90deg, red, navy, aqua);
+}
+/*# sourceMappingURL=styles.css.map */
