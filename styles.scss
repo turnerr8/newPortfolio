@@ -42,8 +42,8 @@
   
   .blob{
     position: relative;
-    height: 25em;
-    width: 25em;
+    height: 30em;
+    width: 30em;
     border-radius: 50%;
     mix-blend-mode: multiply;
     filter: blur(125px);
@@ -54,14 +54,14 @@
   .b2{
     background-color: #FF0000;
   
-    bottom: 5em;
+    bottom: 7em;
     animation: blobMovement 7s infinite;
   }
   .b1{
     background-color: #9E00FF;
   
-    right: -7em;
-    top: 5em;
+    right: -9em;
+    top: 7em;
     animation: blobMovement 7s infinite;
     animation-delay:  2s;
   
@@ -69,8 +69,8 @@
   .b3{
     background-color: #FFD600;
   
-    left: -7em;
-    top: 5em;
+    left: -9em;
+    top: 7em;
     animation: blobMovement 7s infinite;
     animation-delay:  4s;
   
@@ -92,7 +92,7 @@ nav{
     box-shadow: 7px 7px 15px rgba($color: #525252, $alpha: .5);
 
     margin: 1em auto;
-    width: 50%;
+    width: 40%;
     background-color: white;
     border-radius: 4em;
     padding: 1px 30px;
@@ -101,12 +101,13 @@ nav{
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        justify-content: space-between;
+        justify-content: space-around;
         align-content: center;
         list-style: none;
     }
     li{
         font-family: 'IBM Plex Mono', monospace;
+        font-weight: bold;
         font-size: 1.5em;
         display: inline;
         padding: .5em;
@@ -122,15 +123,18 @@ nav{
 
 
 .content{
-    width: 90%;
+    width: 80%;
+    max-width: 1100px;
     margin: 0 auto;
     height: fit-content;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-   
-    justify-content: space-between;
-    align-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "w1 w2 w2"
+    "w3 w3 w4"
+    "w5 w6 w6";
+    gap: 1em;
     padding: .5em;
 }
 
@@ -141,7 +145,7 @@ nav{
     aspect-ratio: 1 /1;
     width: 300px;
     //flex-grow: 1;
-    margin: 1em;
+    
     height: 250px;
     border-radius: 20px;
     background-color: white;
@@ -150,10 +154,11 @@ nav{
 }
 
 .w1{
+    grid-area: w1;
     padding: 0;
     justify-content: center;
-    width: 30%;
-    aspect-ratio: 1 / 1;
+    width: 100%;
+    //aspect-ratio: 1 / 1;
     img{
         position: relative;
         height: 100%;
@@ -164,29 +169,42 @@ nav{
 }
 
 .w2{
-    width: 60%;
-    aspect-ratio: 2 / 1;
-    align-content: center;
+    grid-area: w2;
+    width: 100%;
+    //align-content: center;
+    //justify-content: center;
     h1{
         font-family: 'IBM Plex Mono', monospace;
         font-size: 4em;
+        margin-left: 1em;
         height: fit-content;
+        align-self: center;
     }
 }
 
 .w3{
-    width: 60%;
-    aspect-ratio: 2 / 1;
+    grid-area: w3;
+    width: 100%;
+    
     font-family: 'SF', sans-serif;
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    
     h3, p {
         margin: .5em;
+    }
+    h3{
+        font-size: 1.5em;
+    }
+    p{
+        font-size: 1.1em;
     }
 }
 //-------------------- PROJECTS WIDGET --------------------
 .w5{
+    grid-area: w5;
+    width: 100%;
     flex-direction: column;
     h3{
         font-family: 'IBM Plex Mono', monospace;
@@ -195,15 +213,23 @@ nav{
     img{
         justify-self: center;
         align-self: center;
-        width: 80%;
+        height: 80%;
     }
+}
+
+.w4{
+    grid-area: w4;
+    width: 100%;
 }
 
 //------------------ SPOTIFY WIDGET -----------------------
 .w6 {
+    grid-area: w6;
+    width: 100%;
     flex-direction: row;
     align-content: space-between;
-    width: 60%;
+    
+    
     background-color: #000;
     .logo{
         height: 30%;
@@ -241,9 +267,13 @@ nav{
         .recently-played{
             color: white;
             font-size: 1.5em;
+            font-weight:400;
         }
         .song-artist{
             align-self: flex-end;
+        }
+        .playing-song{
+            display: flex;
         }
         .song{
             font-family: 'IBM Plex Mono', monospace;
@@ -251,9 +281,67 @@ nav{
             font-size: 3em;
             color: #1DCB5B;
             text-decoration: none;
+            align-self: center;
             
         }
-        
+        //-------------------PLAYING----------------
+        .play-animation{
+            display: inline-block;
+            height: 30px;
+            //border: solid red 1px;
+            width: 20px;
+            align-self: center;
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .bar1{
+                animation: bounce 2.2s ease infinite alternate;
+            }
+            .bar2{
+                animation: bounce 2.2s ease infinite alternate;
+                animation-delay: 2s;
+            }
+            .bar3{
+                animation: bounce 2.2s ease infinite alternate;
+                animation-delay: 3s;
+            }
+
+            .bar{
+                align-self: center;
+                position: relative;
+                top: 4px;
+                height: 80%;
+                width: 20%;
+                border-radius: 30px;
+                background-color: #1DCB5B;
+                
+
+            }
+            
+
+        }
+        //PLAYING KEYFRAMES
+        @keyframes bounce {
+            10% {
+                transform: scaleY(0.4);
+            }
+            30% {
+                transform: scaleY(1);
+            }
+            60% {
+                transform: scaleY(0.5);
+            }
+            80% {
+                transform: scaleY(0.75);
+            }
+            100%{
+                transform: scaleY(1);
+            }
+        }
+
+
         .song:hover{
             cursor: pointer;
             opacity: 80%;
@@ -261,6 +349,8 @@ nav{
         .artist {
             color: white;
             font-size: .9em;
+            font-weight:400;
+
             font-family: 'SF', sans-serif;
 
         }

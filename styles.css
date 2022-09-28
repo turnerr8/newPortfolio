@@ -51,8 +51,8 @@
 }
 .blob {
   position: relative;
-  height: 25em;
-  width: 25em;
+  height: 30em;
+  width: 30em;
   border-radius: 50%;
   mix-blend-mode: multiply;
   filter: blur(125px);
@@ -60,15 +60,15 @@
 
 .b2 {
   background-color: #FF0000;
-  bottom: 5em;
+  bottom: 7em;
   -webkit-animation: blobMovement 7s infinite;
           animation: blobMovement 7s infinite;
 }
 
 .b1 {
   background-color: #9E00FF;
-  right: -7em;
-  top: 5em;
+  right: -9em;
+  top: 7em;
   -webkit-animation: blobMovement 7s infinite;
           animation: blobMovement 7s infinite;
   -webkit-animation-delay: 2s;
@@ -77,8 +77,8 @@
 
 .b3 {
   background-color: #FFD600;
-  left: -7em;
-  top: 5em;
+  left: -9em;
+  top: 7em;
   -webkit-animation: blobMovement 7s infinite;
           animation: blobMovement 7s infinite;
   -webkit-animation-delay: 4s;
@@ -100,7 +100,7 @@
 nav {
   box-shadow: 7px 7px 15px rgba(82, 82, 82, 0.5);
   margin: 1em auto;
-  width: 50%;
+  width: 40%;
   background-color: white;
   border-radius: 4em;
   padding: 1px 30px;
@@ -110,12 +110,13 @@ nav ul {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: center;
   list-style: none;
 }
 nav li {
   font-family: "IBM Plex Mono", monospace;
+  font-weight: bold;
   font-size: 1.5em;
   display: inline;
   padding: 0.5em;
@@ -127,16 +128,17 @@ nav #about {
 }
 
 .content {
-  width: 90%;
+  width: 80%;
+  max-width: 1100px;
   margin: 0 auto;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "w1 w2 w2" "w3 w3 w4" "w5 w6 w6";
+  gap: 1em;
   padding: 0.5em;
 }
 
@@ -146,7 +148,6 @@ nav #about {
   padding: 1em;
   aspect-ratio: 1/1;
   width: 300px;
-  margin: 1em;
   height: 250px;
   border-radius: 20px;
   background-color: white;
@@ -154,10 +155,10 @@ nav #about {
 }
 
 .w1 {
+  grid-area: w1;
   padding: 0;
   justify-content: center;
-  width: 30%;
-  aspect-ratio: 1/1;
+  width: 100%;
 }
 .w1 img {
   position: relative;
@@ -167,21 +168,22 @@ nav #about {
 }
 
 .w2 {
-  width: 60%;
-  aspect-ratio: 2/1;
-  align-content: center;
+  grid-area: w2;
+  width: 100%;
 }
 .w2 h1 {
   font-family: "IBM Plex Mono", monospace;
   font-size: 4em;
+  margin-left: 1em;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  align-self: center;
 }
 
 .w3 {
-  width: 60%;
-  aspect-ratio: 2/1;
+  grid-area: w3;
+  width: 100%;
   font-family: "SF", sans-serif;
   flex-direction: column;
   align-content: center;
@@ -190,8 +192,16 @@ nav #about {
 .w3 h3, .w3 p {
   margin: 0.5em;
 }
+.w3 h3 {
+  font-size: 1.5em;
+}
+.w3 p {
+  font-size: 1.1em;
+}
 
 .w5 {
+  grid-area: w5;
+  width: 100%;
   flex-direction: column;
 }
 .w5 h3 {
@@ -201,13 +211,19 @@ nav #about {
 .w5 img {
   justify-self: center;
   align-self: center;
-  width: 80%;
+  height: 80%;
+}
+
+.w4 {
+  grid-area: w4;
+  width: 100%;
 }
 
 .w6 {
+  grid-area: w6;
+  width: 100%;
   flex-direction: row;
   align-content: space-between;
-  width: 60%;
   background-color: #000;
 }
 .w6 .logo {
@@ -242,9 +258,13 @@ nav #about {
 .w6 .spotify-recent .recently-played {
   color: white;
   font-size: 1.5em;
+  font-weight: 400;
 }
 .w6 .spotify-recent .song-artist {
   align-self: flex-end;
+}
+.w6 .spotify-recent .playing-song {
+  display: flex;
 }
 .w6 .spotify-recent .song {
   font-family: "IBM Plex Mono", monospace;
@@ -252,6 +272,76 @@ nav #about {
   font-size: 3em;
   color: #1DCB5B;
   text-decoration: none;
+  align-self: center;
+}
+.w6 .spotify-recent .play-animation {
+  display: inline-block;
+  height: 30px;
+  width: 20px;
+  align-self: center;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.w6 .spotify-recent .play-animation .bar1 {
+  -webkit-animation: bounce 2.2s ease infinite alternate;
+          animation: bounce 2.2s ease infinite alternate;
+}
+.w6 .spotify-recent .play-animation .bar2 {
+  -webkit-animation: bounce 2.2s ease infinite alternate;
+          animation: bounce 2.2s ease infinite alternate;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+.w6 .spotify-recent .play-animation .bar3 {
+  -webkit-animation: bounce 2.2s ease infinite alternate;
+          animation: bounce 2.2s ease infinite alternate;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.w6 .spotify-recent .play-animation .bar {
+  align-self: center;
+  position: relative;
+  top: 4px;
+  height: 80%;
+  width: 20%;
+  border-radius: 30px;
+  background-color: #1DCB5B;
+}
+@-webkit-keyframes bounce {
+  10% {
+    transform: scaleY(0.4);
+  }
+  30% {
+    transform: scaleY(1);
+  }
+  60% {
+    transform: scaleY(0.5);
+  }
+  80% {
+    transform: scaleY(0.75);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes bounce {
+  10% {
+    transform: scaleY(0.4);
+  }
+  30% {
+    transform: scaleY(1);
+  }
+  60% {
+    transform: scaleY(0.5);
+  }
+  80% {
+    transform: scaleY(0.75);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
 .w6 .spotify-recent .song:hover {
   cursor: pointer;
@@ -260,6 +350,7 @@ nav #about {
 .w6 .spotify-recent .artist {
   color: white;
   font-size: 0.9em;
+  font-weight: 400;
   font-family: "SF", sans-serif;
 }
 
